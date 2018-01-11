@@ -16,10 +16,11 @@ import { INITIAL_APPLICATION_STATE, ApplicationState } from 'app/store/applicati
 import { LOADERS_USER_THREADS_ACTION, LoadUserThreadsAction } from 'app/store/actions';
 
 
-export function storeReducer (state: ApplicationState, action: Action): ApplicationState {
+export function storeReducer (state: ApplicationState, 
+    action: Action): ApplicationState {
   switch(action.type){
     case LOADERS_USER_THREADS_ACTION:
-      return handledLoadedUserThreadsAction(state, action);
+      return handledLoadedUserThreadsAction(state, <LoadUserThreadsAction>action);
     default: 
       return state
   }
