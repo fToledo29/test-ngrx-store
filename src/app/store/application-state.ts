@@ -5,13 +5,11 @@ import { StoreData, INITIAL_STORE_DATA } from "app/store/store-data";
 
 
 export interface ApplicationState {
-    // routerReducer: RouterReducerState<RouterStateUrl>;
     uiState: UiState,
-    storeDate: StoreData
+    storeData: StoreData
 }
 
 export const INITIAL_APPLICATION_STATE: ApplicationState = {
-    // routerReducer: undefined,
     uiState: INITIAL_UI_STATE,
-    storeDate: INITIAL_STORE_DATA
+    storeData: INITIAL_STORE_DATA
 }

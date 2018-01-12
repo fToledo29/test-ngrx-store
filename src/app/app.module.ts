@@ -26,10 +26,11 @@ export function storeReducer (state: ApplicationState,
   }
 }
 
-function handledLoadedUserThreadsAction(state: ApplicationState, action: LoadUserThreadsAction): ApplicationState{
+function handledLoadedUserThreadsAction(state: ApplicationState, 
+  action: LoadUserThreadsAction): ApplicationState{
   const userData = action.payload;
   const newState: ApplicationState = Object.assign({}, state);
-  newState.storeDate = {
+  newState.storeData = {
     participants: _.keyBy( action.payload.participants, 'id'),
     messages: _.keyBy( action.payload.messages, 'id'),
     threads: _.keyBy( action.payload.threads, 'id'),
@@ -50,7 +51,7 @@ function handledLoadedUserThreadsAction(state: ApplicationState, action: LoadUse
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.forRoot({reducer: storeReducer})
+    StoreModule.forRoot({initialState: storeReducer})
   ],
   providers: [ThreadsService],
   bootstrap: [AppComponent]
