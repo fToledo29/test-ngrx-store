@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { StoreModule, Action } from '@ngrx/store';
+import { StoreModule, Action, combineReducers } from '@ngrx/store';
 import * as _ from 'lodash';
 
 import { AppComponent } from './app.component';
@@ -16,7 +16,7 @@ import { INITIAL_APPLICATION_STATE, ApplicationState } from 'app/store/applicati
 import { LOADERS_USER_THREADS_ACTION, LoadUserThreadsAction } from 'app/store/actions';
 
 
-export function storeReducer (state: ApplicationState, 
+export function storeReducer (state: ApplicationState = INITIAL_APPLICATION_STATE, 
     action: Action): ApplicationState {
   switch(action.type){
     case LOADERS_USER_THREADS_ACTION:
@@ -51,7 +51,7 @@ function handledLoadedUserThreadsAction(state: ApplicationState,
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.forRoot({initialState: storeReducer})
+    StoreModule.forRoot(combineReducers({storeReducer}))
   ],
   providers: [ThreadsService],
   bootstrap: [AppComponent]
